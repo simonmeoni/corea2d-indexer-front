@@ -1,8 +1,12 @@
 <template>
   <div class="api-viewer">
     <input v-model="search" placeholder="entrer une requête valide ...">
-    <ul v-if="typeof(entry)== 'object'"><li v-for="(t, el) in entry">{{ el }} : {{ t }}</li></ul>
-    <p v-else>{{ entry }}</p>
+    <div class="content has-text-centered section">
+          <div class="media-content" v-if="typeof(entry) == 'object'">
+            <p class="title" v-for="(t, el) in entry"><strong>{{el}}</strong> : {{t}}</p>
+          </div>
+          <p v-else>{{ entry }}</p>
+    </div>
   </div>
 </template>
 
@@ -28,7 +32,7 @@
       query() {
         const splitSearch = this.search.split('-');
         if (splitSearch.length !== 2 || splitSearch[1] === '') {
-          this.entry = 'recherche mal formée ou champ de recherche vide';
+          this.entry = 'recherche mal formée ou le champ de recherche vide';
         } else {
           axios.get(`http://localhost:3000/search?db=${splitSearch[0]}&id=${splitSearch[1]}`)
             .then((response) => {
@@ -39,7 +43,7 @@
             });
         }
       },
-      debounceQuery: _.debounce(function () { this.query(); }, 300),
+      debounceQuery: _.debounce(function () { this.query(); }, 700),
     },
   };
 </script>

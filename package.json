@@ -12,8 +12,9 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
-    "vue": "^2.5.2",
-    "lodash": "latest"
+    "bulma": "^0.6.0",
+    "lodash": "latest",
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
