@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <api-viewer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import ApiViewer from './components/ApiViewer';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    ApiViewer,
   },
 };
 </script>
