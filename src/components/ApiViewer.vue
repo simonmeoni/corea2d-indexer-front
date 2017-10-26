@@ -1,12 +1,30 @@
 <template>
   <div class="api-viewer">
-    <input v-model="search" placeholder="entrer une requête valide ...">
-    <div class="content has-text-centered section">
-          <div class="media-content" v-if="typeof(entry) == 'object'">
-            <p class="title" v-for="(t, el) in entry"><strong>{{el}}</strong> : {{t}}</p>
+    <div class="hero-head container">
+      <h1 class="title is-size-1 has-text-centered">CoReA2d</h1>
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" v-model="search" placeholder="entrer une requête valide ...">
+            <p class="help">
+              la requête est de la forme suivante : <strong>"couche d'annotation"</strong>-<strong>"identifiant
+              de l'entrée"</strong> ex: lst-1
+            </p>
           </div>
-          <p v-else>{{ entry }}</p>
+        </div>
+  </div>
+  <div class="hero-body">
+    <div class="container has-text-centered is-centered" v-if="typeof(entry) == 'object'">
+      <div class="notification is-half" v-for="(t, el) in entry" v-if="t && el !== 'size' && el !== 'id'">
+        <h4>
+          <strong>{{ el }}</strong>
+        </h4>
+        <div>
+          <p>{{ t }}</p>
+        </div>
+      </div>
     </div>
+    <p v-else="" class="container has-text-centered">{{ entry }}</p>
+  </div>
   </div>
 </template>
 
@@ -47,24 +65,3 @@
     },
   };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-</style>

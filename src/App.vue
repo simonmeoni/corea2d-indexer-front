@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <api-viewer/>
+    <api-viewer class="hero is-fullheight"></api-viewer>
   </div>
 </template>
 
@@ -14,14 +14,3 @@ export default {
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: 'Cardo', serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
