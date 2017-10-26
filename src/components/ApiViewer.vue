@@ -7,7 +7,7 @@
             <input class="input" type="text" v-model="search" placeholder="entrer une requête valide ...">
             <p class="help">
               la requête est de la forme suivante : <strong>"couche d'annotation"</strong>-<strong>"identifiant
-              de l'entrée"</strong> ex: lst-1
+              de l'entrée"</strong> ex: LST-1
             </p>
           </div>
         </div>
@@ -38,6 +38,10 @@
       return {
         entry: '',
         search: '',
+        dbDict: {
+          LST: 'lexique_transdisciplinaire',
+          PhrLG: 'lexique_phraseo',
+        },
       };
     },
     watch: {
@@ -52,7 +56,7 @@
         if (splitSearch.length !== 2 || splitSearch[1] === '') {
           this.entry = 'recherche mal formée ou le champ de recherche vide';
         } else {
-          axios.get(`http://localhost:3000/search?db=${splitSearch[0]}&id=${splitSearch[1]}`)
+          axios.get(`http://localhost:3000/search?db=${this.dbDict[splitSearch[0]]}&id=${splitSearch[1]}`)
             .then((response) => {
               this.entry = response.data;
             })
