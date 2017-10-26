@@ -14,7 +14,7 @@
   </div>
   <div class="hero-body">
     <div class="container has-text-centered is-centered" v-if="typeof(entry) == 'object'">
-      <div class="notification is-half" v-for="(t, el) in entry" v-if="t && el !== 'size' && el !== 'id'">
+      <div class="notification is-half" v-for="(t, el) in entry" v-if="t">
         <h4>
           <strong>{{ labelDict[el] ? labelDict[el] : el[0].toUpperCase() + el.slice(1)}}</strong>
         </h4>
@@ -40,9 +40,9 @@
         search: '',
         dbDict: {
           LST: 'lexique_transdisciplinaire',
-          lst: 'lexique_phraseo',
-          ls: 'lexique_phraseo',
-          l: 'lexique_phraseo',
+          lst: 'lexique_transdisciplinaire',
+          ls: 'lexique_transdisciplinaire',
+          l: 'lexique_transdisciplinaire',
           PhrLG: 'lexique_phraseo',
           ph: 'lexique_phraseo',
           phrlg: 'lexique_phraseo',
