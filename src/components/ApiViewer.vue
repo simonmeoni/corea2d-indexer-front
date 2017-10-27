@@ -11,10 +11,11 @@
       <div class="field columns">
         <div class="column"></div>
         <div class="control is-10 is-6-desktop column">
-          <input class="input is-medium" type="text" v-model="search" placeholder="entrer une requête valide ...">
+          <input class="input is-medium" type="text" v-model="search"
+                 placeholder="rechercher une entrée dans une des ressources disponibles ...">
           <p class="help">
-            la requête est de la forme suivante : <strong>"couche d'annotation"</strong>-<strong>"identifiant
-            de l'entrée"</strong> ex: LST-1
+            la requête doit être de la forme suivante : <strong>"couche d'annotation"</strong>-<strong>"identifiant
+            de l'entrée" ex: </strong> LST-1; lst-1; PhrLG-1; ph-1
           </p>
         </div>
         <div class="column"></div>
@@ -86,14 +87,14 @@
       query() {
         const splitSearch = this.search.split('-');
         if (splitSearch.length !== 2 || splitSearch[1] === '') {
-          this.entry = 'recherche mal formée ou le champ de recherche vide';
+          this.entry = 'la requête est mal formée ou le champs de recherche est vide';
         } else {
           axios.get(`http://localhost:3000/search?db=${this.dbDict[splitSearch[0]]}&id=${splitSearch[1]}`)
             .then((response) => {
               this.entry = response.data;
             })
             .catch(() => {
-              this.entry = 'la recherche n\'a pas donnée de résultat ...';
+              this.entry = 'pas de résultat pour la recherche courante';
             });
         }
       },
