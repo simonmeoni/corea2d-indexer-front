@@ -48,6 +48,7 @@
 <script>
   import axios from 'axios';
   import _ from 'lodash';
+  import { url } from '../../config/url-config';
 
   export default {
     name: 'ApiViewer',
@@ -89,7 +90,7 @@
         if (splitSearch.length !== 2 || splitSearch[1] === '') {
           this.entry = 'la requête est mal formée ou le champs de recherche est vide';
         } else {
-          axios.get(`http://localhost:3000/search?db=${this.dbDict[splitSearch[0]]}&id=${splitSearch[1]}`)
+          axios.get(`${url[process.env.NODE_ENV]}/search?db=${this.dbDict[splitSearch[0]]}&id=${splitSearch[1]}`)
             .then((response) => {
               this.entry = response.data;
             })
