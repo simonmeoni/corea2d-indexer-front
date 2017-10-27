@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <api-viewer class="hero is-fullheight"></api-viewer>
+    <api-viewer class="section"></api-viewer>
   </div>
 </template>
 
