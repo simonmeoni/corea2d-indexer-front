@@ -2,40 +2,36 @@
   <div class="api-viewer">
 
     <div class="hero is-medium has-text-centered">
-      <div class="hero-body">
-        <h1 class="title is-size-1">CoReA2D</h1>
+      <div class="hero-head">
+        <h1 class="title is-size-1 is-size-2-mobile">CoReA2D</h1>
       </div>
     </div>
-
+    <br class="is-hidden-mobile"/>
+    <br/>
+    <br/>
     <div class="container">
-      <div class="field columns">
-        <div class="column"></div>
-        <div class="control is-10 is-6-desktop column">
+      <div class="field">
+        <div class="control is-10 is-6-desktop">
           <input class="input is-medium" type="text" v-model="search"
                  placeholder="rechercher une entrée dans une des ressources disponibles ...">
-          <p class="help">
+          <p class="help is-hidden-mobile">
             la requête doit être de la forme suivante : <strong>"couche d'annotation"</strong>-<strong>"identifiant
             de l'entrée" ex: </strong> LST-1; lst-1; PhrLG-1; ph-1
           </p>
         </div>
-        <div class="column"></div>
       </div>
-      <br/>
     </div>
-
-    <div class="container is-centered has-text-centered">
+    <br/>
+    <br class="is-hidden-mobile"/>
+    <div class="container">
       <div v-if="typeof(entry) == 'object'">
-        <div class="columns" v-for="(t, el) in entry" v-if="t">
-          <div class="column"></div>
-          <div class="notification is-8 column">
-            <h4>
-              <strong>{{ labelDict[el] ? labelDict[el] : el[0].toUpperCase() + el.slice(1)}}</strong>
-            </h4>
-            <div>
+        <div v-for="(t, el) in entry" v-if="t">
+          <div class="gray-background is-size-6-mobile has-text-centered is-8">
+              <p>
+                <strong>{{ labelDict[el] ? labelDict[el] : el[0].toUpperCase() + el.slice(1)}}</strong>
+              </p>
               <p>{{ t }}</p>
-            </div>
           </div>
-          <div class="column"></div>
           <br/>
         </div>
       </div>
@@ -73,14 +69,15 @@
           ctl: 'terminology-ling',
         },
         labelDict: {
-          class: 'Classe Sémantique',
+          class: 'Classe sémantique',
+          subclass: 'Sous-classe sémantique',
           definition: 'Définition',
-          pos: 'Part-Of-Speech',
-          POS: 'Part-Of-Speech',
-          super_entry: 'Entrée Sémantique',
-          norm_form: 'Forme Normalisée',
-          tlfi_norm: 'Forme Extraite du TLFi',
-          lexical_entry: 'Entrée Lexicale',
+          pos: 'Catégorie syntaxique fonctionelle',
+          POS: 'Catégorie syntaxique fonctionelle',
+          super_entry: 'Forme initiale',
+          norm_form: 'Forme lemmatisée et normalisée',
+          tlfi_norm: 'Forme extraite du TLFi',
+          lexical_entry: 'Entrée lexicale',
           normalized_form: 'Domaine concerné',
           forme_canonique: 'Forme(s) canonique(s)',
         },
@@ -111,3 +108,10 @@
     },
   };
 </script>
+
+<style>
+  .gray-background {
+    background-color: rgb(245, 245, 245);
+    border: 14px solid rgb(245, 245, 245);
+  }
+</style>

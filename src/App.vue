@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <api-viewer class="section"></api-viewer>
+    <api-viewer class="section is-size-7-mobile"></api-viewer>
   </div>
 </template>
 
